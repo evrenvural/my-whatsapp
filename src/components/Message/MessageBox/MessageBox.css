@@ -1,0 +1,15 @@
+#messageBox{
+    height: auto;
+    width: 100%;
+    background-color: blanchedalmond;
+    border-radius: 30px;
+}
+
+#messageBox label{
+    color: brown;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;   
+    padding-bottom: 5px;
+    font-size: 25px; 
+}
