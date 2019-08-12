@@ -2,28 +2,28 @@ import React, { Component } from 'react';
 import MessageBox from './MessageBox/MessageBox.js';
 import './Message.css';
 
-import {connect} from 'react-redux';
-import {sendMessage, fetchMessages} from '../../redux/actions';
+import { connect } from 'react-redux';
+import { sendMessage, fetchMessages } from '../../redux/actions';
 
 class Message extends Component {
 
-    constructor(){
+    constructor() {
         super();
         this.state = {
             value: '',
         };
     }
 
-    handleChange = (event) =>{
-        this.setState({value: event.target.value});
+    handleChange = (event) => {
+        this.setState({ value: event.target.value });
     }
 
     sendMessage = () => {
         this.props.sendMessage(this.state.value);
-        this.setState({value:""});
+        this.setState({ value: "" });
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.props.fetchMessages();
     }
 
@@ -32,14 +32,16 @@ class Message extends Component {
             <div className="card text-white bg-info mb-3">
                 <div className="card-header">EvoApp</div>
                 <div className="card-body">
+                    <div className="messages">
+                        {this.props.messages.map((message) => <MessageBox value={message} />)}
+                    </div>
 
-                    {this.props.messages.map((message) => <MessageBox value = {message}/>)}
 
                     <div className="input">
-                        <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                        <input type="text" value={this.state.value} onChange={this.handleChange} />
                         <button onClick={this.sendMessage}>Gönder</button>
                     </div>
-                    
+
                 </div>
             </div>
         )
@@ -53,7 +55,9 @@ const mapStateToProps = (state) => (
 )
 
 export default connect(
-    mapStateToProps, 
-    {sendMessage,
-    fetchMessages}
+    mapStateToProps,
+    {
+        sendMessage,
+        fetchMessages
+    }
 )(Message);

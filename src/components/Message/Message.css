@@ -8,9 +8,14 @@
     height: 60px;
 }
 .card-body{
-    height: 630px;
+    height: 635px;
     position: relative;
     min-height: 150px;
+}
+
+.messages{
+    overflow-y: scroll;
+    height: 560px;
 }
 
 .input{
