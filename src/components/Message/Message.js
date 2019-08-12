@@ -3,7 +3,7 @@ import MessageBox from './MessageBox/MessageBox.js';
 import './Message.css';
 
 import {connect} from 'react-redux';
-import {sendMessage} from '../../redux/actions';
+import {sendMessage, fetchMessages} from '../../redux/actions';
 
 class Message extends Component {
 
@@ -16,11 +16,15 @@ class Message extends Component {
 
     handleChange = (event) =>{
         this.setState({value: event.target.value});
-        console.log(this.props.messages);
     }
 
     sendMessage = () => {
         this.props.sendMessage(this.state.value);
+        this.setState({value:""});
+    }
+
+    componentWillMount(){
+        this.props.fetchMessages();
     }
 
     render() {
@@ -38,7 +42,6 @@ class Message extends Component {
                     
                 </div>
             </div>
-            
         )
     }
 }
@@ -51,5 +54,6 @@ const mapStateToProps = (state) => (
 
 export default connect(
     mapStateToProps, 
-    {sendMessage}
+    {sendMessage,
+    fetchMessages}
 )(Message);

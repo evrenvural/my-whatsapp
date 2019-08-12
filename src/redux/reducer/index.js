@@ -1,13 +1,12 @@
-import {ACTION_TYPE} from '../constants';
+import { ACTION_TYPE } from '../constants';
 
 const messages = (state = [], action) => {
-    let messages = null;
+    let messages = [];
 
-    switch(action.type){
+    switch (action.type) {
         case ACTION_TYPE.SEND_MESSAGE:
-            messages = [...state, action.text];
-        
-        return messages;
+            messages = action.payload;
+            return messages;
 
         default:
             return state;
