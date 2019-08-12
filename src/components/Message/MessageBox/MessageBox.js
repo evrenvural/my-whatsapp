@@ -5,7 +5,7 @@ export default class MessageBox extends Component {
     render() {
         return (
             <div id="messageBox">
-                <label>LALALALALSDKSALŞDKASŞL</label>
+                <label>{this.props.value}</label>
             </div>
         )
     }

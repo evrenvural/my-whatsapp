@@ -1,0 +1,3 @@
+export const ACTION_TYPE = {
+    SEND_MESSAGE: "SEND_MESSAGE"
+}
